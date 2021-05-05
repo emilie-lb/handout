@@ -1,12 +1,18 @@
 import datetime
 import logging
+import argparse
+
 logging.basicConfig(level=logging.DEBUG)
 
 
-logging.info("vérification si le pays demandé existe")
 
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument(dest='path', type=str, help='chemin vers fichier .log')
+args = parser.parse_args()
+# print(args)
 
 def open_log_file(path):
+    logging.info("entrée dans fonction open_log_file")
     liste_logs = []
     with open(path, "r") as log_file:
         for line in log_file.readlines():
@@ -68,6 +74,8 @@ def main(path):
 
     
 
+if __name__ == '__main__':
+    main(args.path)
 
 # print(main("planning.log"))
-main("planning.log")
+# main("planning.log")
